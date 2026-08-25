@@ -1,0 +1,1168 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #08080b;
+    --bg2: #121015;
+    --ivory: #f7f1e8;
+    --muted: #aaa39e;
+    --gold: #d8b477;
+    --rose: #b9868c;
+    --line: rgba(247, 241, 232, .09);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background: var(--bg);
+    color: var(--ivory);
+
+    font-family: "DM Sans", sans-serif;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================
+   EXPERIENCE
+========================================= */
+
+#experience {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(216, 180, 119, .065),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(185, 134, 140, .045),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #08080b,
+            #121015,
+            #09090c
+        );
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(216, 180, 119, .09),
+            transparent 45%
+        ),
+        #08080b;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+.intro-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-card {
+    width: min(500px, 100%);
+
+    padding: 48px 28px;
+
+    text-align: center;
+
+    border: 1px solid rgba(216, 180, 119, .18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.008)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+
+    animation: introIn 1s ease both;
+}
+
+.intro-mark {
+    color: var(--gold);
+
+    font-size: 15px;
+
+    margin-bottom: 24px;
+
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+.intro-greeting {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(38px, 10vw, 55px);
+
+    margin-bottom: 25px;
+}
+
+.intro-main {
+    font-family: "Playfair Display", serif;
+
+    font-size: 20px;
+
+    margin-bottom: 13px;
+}
+
+.intro-sub {
+    max-width: 350px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+#openExperience {
+    margin-top: 32px;
+
+    padding: 14px 24px;
+
+    border: 1px solid rgba(216,180,119,.45);
+
+    border-radius: 50px;
+
+    background: rgba(216,180,119,.025);
+
+    color: var(--ivory);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: .35s ease;
+}
+
+#openExperience span {
+    color: var(--gold);
+
+    margin-left: 8px;
+}
+
+#openExperience:hover,
+#openExperience:active {
+    background: var(--gold);
+
+    color: #08080b;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(216,180,119,.16);
+}
+
+
+/* =========================================
+   SCENES
+========================================= */
+
+.scene {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 22px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.025);
+
+    filter: blur(7px);
+
+    transition:
+        opacity 1s ease,
+        transform 1.15s cubic-bezier(.2,.7,.2,1),
+        filter 1.15s ease,
+        visibility 1s;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
+
+    filter: blur(0);
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.scene::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,180,119,.055),
+            rgba(185,134,140,.015) 38%,
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    animation:
+        backgroundBreath 8s ease-in-out infinite alternate;
+}
+
+.scene::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255,255,255,.018) 50%,
+            transparent 65%
+        );
+
+    transform: translateX(-100%);
+
+    animation:
+        lightSweep 16s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.scene-content {
+    position: relative;
+
+    width: min(900px, 100%);
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+.scene.active .scene-content {
+    animation:
+        contentEnter 1.1s .08s cubic-bezier(.22,.7,.25,1) both;
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.tiny-label {
+    margin-bottom: 30px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+}
+
+.scene.active .tiny-label {
+    animation:
+        textReveal .8s .15s ease forwards;
+}
+
+h1,
+h2 {
+    font-family: "Playfair Display", serif;
+
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(65px, 18vw, 145px);
+
+    line-height: .9;
+
+    letter-spacing: -5px;
+}
+
+h1 span,
+h2 span {
+    display: block;
+
+    color: var(--gold);
+
+    text-shadow:
+        0 0 35px rgba(216,180,119,.1);
+}
+
+h2 {
+    font-size: clamp(39px, 9vw, 80px);
+
+    line-height: 1.08;
+
+    letter-spacing: -2px;
+}
+
+.subtext {
+    margin-top: 32px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.85;
+
+    opacity: 0;
+}
+
+.scene.active .subtext {
+    animation:
+        gentleText 1.1s .45s ease forwards;
+}
+
+
+/* =========================================
+   LINES
+========================================= */
+
+.single-line {
+    width: 0;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 0 auto 40px;
+
+    opacity: .75;
+}
+
+.scene.active .single-line {
+    animation:
+        lineGrow 1.1s .2s ease forwards;
+}
+
+.single-line.tall {
+    width: 1px;
+
+    height: 0;
+
+    margin-bottom: 38px;
+}
+
+.scene.active .single-line.tall {
+    animation:
+        verticalLineGrow 1s .2s ease forwards;
+}
+
+
+/* =========================================
+   CONVERSATION
+========================================= */
+
+.conversation-row {
+    width: min(600px, 100%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin: 45px auto 0;
+
+    padding: 20px 0;
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+    text-align: left;
+
+    opacity: 0;
+}
+
+.scene.active .conversation-row {
+    animation:
+        textReveal .9s .4s ease forwards;
+}
+
+.conversation-row span {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.conversation-row p {
+    font-size: 14px;
+
+    color: var(--ivory);
+}
+
+
+/* =========================================
+   NAME
+========================================= */
+
+.name-reveal {
+    font-size: clamp(60px, 16vw, 130px);
+
+    color: var(--ivory);
+
+    letter-spacing: -4px;
+
+    animation:
+        nameGlow 3s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   REVEAL
+========================================= */
+
+.reveal-scene {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(216,180,119,.09),
+            transparent 55%
+        );
+}
+
+.reveal-symbol {
+    color: var(--gold);
+
+    font-size: 15px;
+
+    margin-bottom: 22px;
+
+    opacity: 0;
+}
+
+.scene.active .reveal-symbol {
+    animation:
+        symbolReveal 1.2s .15s ease forwards;
+}
+
+.main-reveal {
+    font-size: clamp(55px, 13vw, 120px);
+
+    letter-spacing: -4px;
+
+    opacity: 0;
+}
+
+.scene.active .main-reveal {
+    animation:
+        bigReveal 1.3s .35s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    width: min(650px, 100%);
+
+    margin: 42px auto 0;
+
+    padding: 22px 24px;
+
+    text-align: left;
+
+    border-left:
+        1px solid rgba(216,180,119,.4);
+
+    color: #bdb6b0;
+
+    font-size: 13px;
+
+    line-height: 1.85;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(216,180,119,.025),
+            transparent
+        );
+
+    opacity: 0;
+}
+
+.scene.active .letter {
+    animation:
+        textReveal 1s .5s ease forwards;
+}
+
+.letter p + p {
+    margin-top: 18px;
+}
+
+
+/* =========================================
+   PROPOSAL
+========================================= */
+
+.proposal-scene {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(185,134,140,.06),
+            transparent 55%
+        );
+}
+
+.proposal-text {
+    margin-top: 40px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(25px, 6vw, 44px);
+
+    line-height: 1.35;
+}
+
+.proposal-text strong {
+    color: var(--gold);
+
+    font-weight: 400;
+}
+
+.answer-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 32px;
+
+    flex-wrap: wrap;
+}
+
+.answer-btn {
+    padding: 13px 21px;
+
+    border-radius: 50px;
+
+    border:
+        1px solid rgba(216,180,119,.45);
+
+    background:
+        rgba(216,180,119,.025);
+
+    color: var(--ivory);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: .35s ease;
+}
+
+.answer-btn:hover,
+.answer-btn:active {
+    background: var(--gold);
+
+    color: #08080b;
+
+    transform: translateY(-3px);
+}
+
+.answer-btn.secondary {
+    border-color:
+        rgba(247,241,232,.15);
+}
+
+#answer-message {
+    min-height: 25px;
+
+    margin-top: 25px;
+
+    color: var(--gold);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-button {
+    position: absolute;
+
+    bottom: 48px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 13px 21px;
+
+    border:
+        1px solid rgba(216,180,119,.42);
+
+    border-radius: 50px;
+
+    background:
+        rgba(216,180,119,.025);
+
+    color: var(--ivory);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition: .35s ease;
+
+    animation:
+        buttonFloat 3s ease-in-out infinite;
+}
+
+.next-button span {
+    color: var(--gold);
+
+    margin-left: 8px;
+}
+
+.next-button:hover,
+.next-button:active {
+    background: var(--gold);
+
+    color: #08080b;
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+.next-button:hover span {
+    color: #08080b;
+}
+
+
+/* =========================================
+   END
+========================================= */
+
+.end-line {
+    width: 0;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    opacity: .65;
+
+    margin: 40px auto;
+}
+
+.scene.active .end-line {
+    animation:
+        lineGrow 1.1s .35s ease forwards;
+}
+
+.signature {
+    margin-top: 40px;
+
+    font-family: "Playfair Display", serif;
+
+    color: var(--gold);
+
+    font-size: 27px;
+
+    opacity: 0;
+}
+
+.scene.active .signature {
+    animation:
+        textReveal 1s .7s ease forwards;
+}
+
+
+/* =========================================
+   NUMBERS
+========================================= */
+
+.scene-number {
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 24px;
+
+    color: rgba(247,241,232,.22);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 10px;
+
+    transform: translateX(-50%);
+
+    width: 90px;
+
+    height: 1px;
+
+    background:
+        rgba(247,241,232,.08);
+
+    z-index: 30;
+
+    overflow: hidden;
+}
+
+#progress-bar {
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    background: var(--gold);
+
+    transition: width .7s ease;
+}
+
+
+/* =========================================
+   CURSOR
+========================================= */
+
+.cursor-light {
+    position: fixed;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 45;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,180,119,.05),
+            transparent 68%
+        );
+
+    transition:
+        left .15s ease,
+        top .15s ease;
+}
+
+
+/* =========================================
+   NOISE
+========================================= */
+
+.noise {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 40;
+
+    opacity: .018;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes introIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(.98);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes contentEnter {
+    from {
+        opacity: 0;
+        transform:
+            translateY(18px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes gentleText {
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px);
+        filter: blur(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes heroTitle {
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(.97);
+        filter: blur(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes goldReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(16px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes bigReveal {
+    from {
+        opacity: 0;
+        transform:
+            scale(.94)
+            translateY(18px);
+        filter: blur(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes symbolReveal {
+    from {
+        opacity: 0;
+        transform:
+            scale(.5)
+            rotate(-15deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 45px;
+    }
+}
+
+@keyframes verticalLineGrow {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 60px;
+    }
+}
+
+@keyframes backgroundBreath {
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+    }
+}
+
+@keyframes lightSweep {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    25%,
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes nameGlow {
+    from {
+        text-shadow:
+            0 0 5px rgba(216,180,119,0);
+    }
+
+    to {
+        text-shadow:
+            0 0 35px rgba(216,180,119,.15);
+    }
+}
+
+@keyframes buttonFloat {
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-3px);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .scene {
+        padding: 28px 20px;
+    }
+
+    .cursor-light,
+    .noise {
+        display: none;
+    }
+
+    h1 {
+        font-size:
+            clamp(65px, 21vw, 105px);
+
+        letter-spacing: -4px;
+    }
+
+    h2 {
+        font-size:
+            clamp(36px, 11vw, 62px);
+
+        letter-spacing: -1px;
+    }
+
+    .tiny-label {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+    .subtext {
+        font-size: 13px;
+    }
+
+    .letter {
+        max-height: 42vh;
+
+        overflow-y: auto;
+
+        padding: 18px 20px;
+    }
+
+    .answer-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .answer-btn {
+        width: min(280px, 100%);
+    }
+
+    .next-button {
+        bottom: 45px;
+    }
+
+    .scene-number {
+        right: 18px;
+        bottom: 19px;
+    }
+
+    .progress {
+        bottom: 7px;
+    }
+
+    .intro-card {
+        padding: 42px 23px;
+    }
+}
